@@ -1,3 +1,8 @@
+// Global vars
+let result = 0;
+let currentSelection;
+let operator;
+
 // Get the current input
 function getInput() {
   document.addEventListener('click', (e) => {
@@ -13,7 +18,7 @@ function evalInput(input) {
     return;
   }
   if (input === 'clear') {
-    console.log('Clear');
+    clearCalculator();
     return;
   }
   // Check if it is a num or operator
@@ -24,9 +29,15 @@ function evalInput(input) {
   }
 }
 
-// If the input is equal
+// If the input is "equal"
 function getResult() {
-  console.log('GR Function working');
+  // document.getElementById('result').textContent = result;
+  document.getElementById('result').textContent = 'Result';
+}
+// If the input is "clear"
+function clearCalculator() {
+  result = 0;
+  document.getElementById('result').textContent = result;
 }
 
 // Call on page load
