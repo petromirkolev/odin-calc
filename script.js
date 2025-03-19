@@ -22,25 +22,36 @@ function evalInput(input) {
     console.log('equal');
     return;
   }
-  // Get the first number
+
+  // Capture the first number
   if (!Number(isNaN(input)) && operator === '') {
     firstNum += input;
     document.getElementById('result').textContent = firstNum;
   }
-  // Get the second number
+
+  // Capture the second number
   if (!Number(isNaN(input)) && operator !== '') {
-    secondNum += input;
-    document.getElementById('result').textContent = secondNum;
+    // First time capturing second number
+    if (secondNum === '') {
+      secondNum += input;
+      document.getElementById('result').textContent = secondNum;
+      // Every other time we capture it
+    } else {
+    }
   }
+
   // Get the operator
   if (Number(isNaN(input))) {
+    // If it is the first time capturing it
     if (operator === '') {
       operator = input;
       document.getElementById('result').textContent = operator;
+      // Every other time we are capturing it
     } else {
       calculator();
       operator = input;
       document.getElementById('result').textContent = operator;
+      console.log(result);
     }
   }
 }
