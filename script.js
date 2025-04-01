@@ -41,8 +41,16 @@ function getInput(inp) {
 
 // Store input when it is a symbol
 function getOperator(symbol) {
-  operator = symbol;
-  document.getElementById('result').textContent = operator;
+  if (numOne !== '' && numTwo === '') {
+    operator = symbol;
+    document.getElementById('result').textContent = operator;
+  } else {
+    result = eval(numOne + operator + numTwo);
+    document.getElementById('result').textContent = result;
+    numOne = result;
+    numTwo = '';
+    operator = symbol;
+  }
 }
 
 // Store input when it is a number
