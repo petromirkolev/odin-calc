@@ -70,7 +70,12 @@ function getNumber(number) {
 
 // Evaluate result when equal is pressed
 function pressEqual() {
-  document.getElementById('result').textContent = result;
+  if (numOne !== '' && numTwo !== '') {
+    result = eval(numOne + operator + numTwo);
+    document.getElementById('result').textContent = result;
+  } else {
+    return;
+  }
 }
 
 // Clear calculator
