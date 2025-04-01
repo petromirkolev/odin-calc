@@ -1,84 +1,51 @@
-// Global var
-let firstNum = '';
-let secondNum = '';
-let operator = '';
-let result = '';
+// Global vars
 
-// Get the current input
-function getInput() {
+let numOne = '';
+let numTwo = '';
+let operator = '';
+
+// Start the calculator
+function startCalculator() {
+  ls;
   document.addEventListener('click', (e) => {
-    evalInput(e.target.id);
+    if (e.target.id === '') {
+      return;
+    } else {
+      getInput(e.target.id);
+    }
   });
 }
 
-// Evaluate the input
-function evalInput(input) {
-  if (input === 'clear') {
-    firstNum = secondNum = operator = result = '';
-    document.getElementById('result').textContent = '0';
+// Get input from the calculators
+function getInput(inp) {
+  // If it is the equal sign
+  if (inp === '=') {
+    pressEqual();
     return;
   }
-  if (input === '=') {
-    console.log('equal');
+  // If it is the clear sign
+  if (inp === 'clear') {
+    pressClear();
     return;
   }
-
-  // Capture the first number
-  if (!Number(isNaN(input)) && operator === '') {
-    firstNum += input;
-    document.getElementById('result').textContent = firstNum;
+  // If it is a number
+  if (!Number(isNaN(inp))) {
+    console.log('I am a num!');
   }
-
-  // Capture the second number
-  if (!Number(isNaN(input)) && operator !== '') {
-    // First time capturing second number
-    if (secondNum === '') {
-      secondNum += input;
-      document.getElementById('result').textContent = secondNum;
-      // Every other time we capture it
-    } else {
-    }
-  }
-
-  // Get the operator
-  if (Number(isNaN(input))) {
-    // If it is the first time capturing it
-    if (operator === '') {
-      operator = input;
-      document.getElementById('result').textContent = operator;
-      // Every other time we are capturing it
-    } else {
-      calculator();
-      operator = input;
-      document.getElementById('result').textContent = operator;
-      console.log(result);
-    }
+  // If it is a symbol
+  if (Number(isNaN(inp))) {
+    operator = inp;
+    console.log(operator);
+    return;
   }
 }
 
-// Calculator function
-function calculator() {
-  switch (operator) {
-    case '+':
-      result = Number(firstNum) + Number(secondNum);
-      document.getElementById('result').textContent = result;
-      break;
-    case '-':
-      result = Number(firstNum) - Number(secondNum);
-      document.getElementById('result').textContent = result;
-      break;
-    case '*':
-      result = Number(firstNum) * Number(secondNum);
-      document.getElementById('result').textContent = result;
-      break;
-    case '/':
-      result = Number(firstNum) / Number(secondNum);
-      document.getElementById('result').textContent = result;
-      break;
-    default:
-      return;
-  }
+function pressEqual() {
+  console.log('equal');
 }
 
-// Call on page load
-getInput();
+function pressClear() {
+  console.log('clear');
+}
+
+startCalculator();
