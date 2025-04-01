@@ -3,10 +3,10 @@
 let numOne = '';
 let numTwo = '';
 let operator = '';
+let result = '';
 
 // Start the calculator
 function startCalculator() {
-  ls;
   document.addEventListener('click', (e) => {
     if (e.target.id === '') {
       return;
@@ -16,7 +16,7 @@ function startCalculator() {
   });
 }
 
-// Get input from the calculators
+// Get input from the calculator
 function getInput(inp) {
   // If it is the equal sign
   if (inp === '=') {
@@ -30,22 +30,45 @@ function getInput(inp) {
   }
   // If it is a number
   if (!Number(isNaN(inp))) {
-    console.log('I am a num!');
+    getNumber(inp);
   }
   // If it is a symbol
   if (Number(isNaN(inp))) {
-    operator = inp;
-    console.log(operator);
+    getOperator(inp);
     return;
   }
 }
 
-function pressEqual() {
-  console.log('equal');
+// Store input when it is a symbol
+function getOperator(symbol) {
+  operator = symbol;
+  document.getElementById('result').textContent = operator;
 }
 
+// Store input when it is a number
+function getNumber(number) {
+  // If first num
+  if (numTwo === '' && operator === '') {
+    numOne += number;
+    document.getElementById('result').textContent = numOne;
+  }
+
+  // If second num
+  if (numOne !== '' && operator !== '') {
+    numTwo += number;
+    document.getElementById('result').textContent = numTwo;
+  }
+}
+
+// Evaluate result when equal is pressed
+function pressEqual() {
+  document.getElementById('result').textContent = result;
+}
+
+// Clear calculator
 function pressClear() {
-  console.log('clear');
+  numOne = numTwo = operator = result = '';
+  document.getElementById('result').textContent = '0';
 }
 
 startCalculator();
