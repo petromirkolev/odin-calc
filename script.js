@@ -1,5 +1,4 @@
 // Global vars
-
 let numOne = '';
 let numTwo = '';
 let operator = '';
@@ -15,7 +14,6 @@ function startCalculator() {
     }
   });
 }
-
 // Get input from the calculator
 function getInput(inp) {
   // If it is the equal sign
@@ -38,7 +36,6 @@ function getInput(inp) {
     return;
   }
 }
-
 // Store input when it is a symbol
 function getOperator(symbol) {
   if (numOne !== '' && numTwo === '') {
@@ -46,13 +43,13 @@ function getOperator(symbol) {
     document.getElementById('result').textContent = operator;
   } else {
     result = eval(numOne + operator + numTwo);
+
     document.getElementById('result').textContent = result;
     numOne = result;
     numTwo = '';
     operator = symbol;
   }
 }
-
 // Store input when it is a number
 function getNumber(number) {
   // If first num
@@ -67,7 +64,6 @@ function getNumber(number) {
     document.getElementById('result').textContent = numTwo;
   }
 }
-
 // Evaluate result when equal is pressed
 function pressEqual() {
   if (numOne !== '' && numTwo !== '') {
@@ -77,7 +73,6 @@ function pressEqual() {
     return;
   }
 }
-
 // Clear calculator
 function pressClear() {
   numOne = numTwo = operator = result = '';
