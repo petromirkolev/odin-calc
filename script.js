@@ -38,12 +38,14 @@ function getInput(inp) {
 }
 // Store input when it is a symbol
 function getOperator(symbol) {
+  if (numOne === '') {
+    return;
+  }
   if (numOne !== '' && numTwo === '') {
     operator = symbol;
     document.getElementById('result').textContent = operator;
   } else {
     result = eval(numOne + operator + numTwo);
-
     document.getElementById('result').textContent = result;
     numOne = result;
     numTwo = '';
@@ -55,18 +57,42 @@ function getNumber(number) {
   // If first num
   if (numTwo === '' && operator === '') {
     numOne += number;
-    document.getElementById('result').textContent = numOne;
+    if (numOne.length > 11) {
+      document.getElementById('result').textContent = `${numOne.substring(
+        numOne.length,
+        numOne.length - 11
+      )}...`;
+    } else {
+      document.getElementById('result').textContent = numOne;
+    }
   }
-
   // If second num
   if (numOne !== '' && operator !== '') {
     numTwo += number;
-    document.getElementById('result').textContent = numTwo;
+    if (numTwo.length > 11) {
+      document.getElementById('result').textContent = `${numTwo.substring(
+        numTwo.length,
+        numTwo.length - 11
+      )}...`;
+    } else {
+      document.getElementById('result').textContent = numTwo;
+    }
   }
 }
 // Evaluate result when equal is pressed
 function pressEqual() {
   if (numOne !== '' && numTwo !== '') {
+
+    if (result.length > 11) {
+    document.getElementById('result').textContent = ;
+
+    }
+
+    
+
+
+
+
     result = eval(numOne + operator + numTwo);
     document.getElementById('result').textContent = result;
   } else {
@@ -80,3 +106,10 @@ function pressClear() {
 }
 
 startCalculator();
+
+//// Bugs to fix ////
+
+// CAN start with an operator - fixed
+// LIMIT number of chars on display
+//
+//
