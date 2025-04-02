@@ -45,8 +45,7 @@ function getOperator(symbol) {
     operator = symbol;
     document.getElementById('result').textContent = operator;
   } else {
-    result = eval(numOne + operator + numTwo);
-    document.getElementById('result').textContent = result;
+    pressEqual();
     numOne = result;
     numTwo = '';
     operator = symbol;
@@ -82,19 +81,13 @@ function getNumber(number) {
 // Evaluate result when equal is pressed
 function pressEqual() {
   if (numOne !== '' && numTwo !== '') {
-
+    result = String(eval(numOne + operator + numTwo));
     if (result.length > 11) {
-    document.getElementById('result').textContent = ;
-
+      let newResult = result.substring(result.length - 14, result.length + 1);
+      document.getElementById('result').textContent = newResult;
+    } else {
+      document.getElementById('result').textContent = result;
     }
-
-    
-
-
-
-
-    result = eval(numOne + operator + numTwo);
-    document.getElementById('result').textContent = result;
   } else {
     return;
   }
@@ -110,6 +103,5 @@ startCalculator();
 //// Bugs to fix ////
 
 // CAN start with an operator - fixed
-// LIMIT number of chars on display
-//
-//
+// LIMIT number of input chars on display - fixed
+// LIMIT number of result chars - fixed
